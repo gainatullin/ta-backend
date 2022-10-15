@@ -52,7 +52,6 @@ export class WorkspaceService {
 
   async search(dto: SearchWorkspaceDto, userId) {
     const { limitation } = dto;
-    console.log(limitation);
 
     const [list, count] = await this.workspaceRepository
       .createQueryBuilder('workspace')

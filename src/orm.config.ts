@@ -9,7 +9,7 @@ export const AppDataSource: any = new DataSource({
   database: 'backend',
   entities: ['dist/**/*.entity.js'],
   logging: false,
-  synchronize: true,
+  synchronize: true, // if migrations = false,
   // migrationsRun: false,
   // migrations: ['dist/**/migrations/*.js'],
 });

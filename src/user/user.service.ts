@@ -53,11 +53,6 @@ export class UserService {
 
   async getAll(dto: SearchUsersDto) {
     const [list, count] = await this.userRepository.findAndCount();
-    console.log('dto', dto);
-    // {
-    //   take: dto.limitation.limit && dto.limitation.limit,
-    //     skip: dto.limitation.offset && (dto.limitation.offset - 1) * dto.limitation.limit,
-    // }
 
     return {
       list,
