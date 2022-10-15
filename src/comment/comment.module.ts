@@ -11,6 +11,6 @@ import { IssueModule } from '../issue/issue.module';
   imports: [TypeOrmModule.forFeature([Comment]), AuthenticationModule, ProjectUserRoleModule, IssueModule],
   providers: [CommentService],
   controllers: [CommentController],
-  exports: [CommentService]
+  exports: [CommentService],
 })
 export class CommentModule {}

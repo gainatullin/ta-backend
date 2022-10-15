@@ -4,7 +4,7 @@ import { Resume } from './resume.entity';
 import { Repository } from 'typeorm';
 import { ErrorException } from '../exceptions/error-exception';
 import { SkillService } from '../skill/skill.service';
-import { CreateResumeDto, GetResumeDto, RemoveResumeDto, UpdateResumeDto } from './dto';
+import { CreateResumeDto, GetResumeDto, RemoveResumeDto } from './dto';
 
 @Injectable()
 export class ResumeService {
@@ -49,23 +49,5 @@ export class ResumeService {
 
     await this.resumeRepository.remove(resume);
     return HttpStatus.OK;
-  }
-
-  async update(dto: UpdateResumeDto, ownerId) {
-    const resume = await this.resumeRepository.findOneBy({ id: dto.id });
-
-    if (!resume) {
-      new ErrorException({ message: 'Resume not found', code: 'RESUME_NOT_FOUND' }).throwError();
-    }
-
-    if (resume.creator.id !== ownerId) {
-      new ErrorException({ message: 'Forbidden', code: 'FORBIDDEN' }).throwError();
-    }
-
-    return await this.resumeRepository.save({
-      id: resume.id,
-      ...resume,
-      ...dto,
-    });
   }
 }

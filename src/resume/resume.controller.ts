@@ -4,7 +4,7 @@ import { ResumeService } from './resume.service';
 import { JwtAuthGuard } from '../authentication/jwt-auth.guard';
 import { Resume } from './resume.entity';
 import { TRequest } from '../types';
-import { CreateResumeDto, GetResumeDto, RemoveResumeDto, UpdateResumeDto } from './dto';
+import { CreateResumeDto, GetResumeDto, RemoveResumeDto } from './dto';
 
 @ApiTags('Resume')
 @Controller('resume')
@@ -33,13 +33,5 @@ export class ResumeController {
   @Post('/remove')
   removeResume(@Body() dto: RemoveResumeDto, @Req() req: TRequest) {
     return this.resumeService.remove(dto, req.user.id);
-  }
-
-  @ApiOperation({ summary: 'Update resume' })
-  @ApiResponse({ status: 200, type: Resume })
-  @UseGuards(JwtAuthGuard)
-  @Post('/update')
-  update(@Body() dto: UpdateResumeDto, @Req() req: TRequest) {
-    return this.resumeService.update(dto, req.user.id);
   }
 }

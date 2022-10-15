@@ -17,15 +17,14 @@ export class CommentService {
   }
 
   async search(dto) {
-    return [];
-    // const [list, count] = await this.commentRepository.findAndCount({
-    //   where: { issue: { id: dto.issueId } },
-    //   relations: ['creator'],
-    // });
-    // return {
-    //   list,
-    //   count,
-    // };
+    const [list, count] = await this.commentRepository.findAndCount({
+      where: { issue: { id: dto.issueId } },
+      relations: ['creator'],
+    });
+    return {
+      list,
+      count,
+    };
   }
 
   async update(dto) {
