@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
 
   async signOut() {
-    return true;
+    //TODO
   }
 
   async getSelf(user) {
